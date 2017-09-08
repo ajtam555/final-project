@@ -54,13 +54,12 @@ const jwt = require('jsonwebtoken');
 
             // IF USER EXISTS, THEN HASH PASSWORD AND CHECK HASH-TO-PASSWORD
             .then((data) => {
-                console.log(data);
+                console.log("data is ",data);
                 var hash = bcrypt.hashSync(req.body.pass, data.salt);
-                console.log(process.env.SECRET_WORD);
 
                 if (data.pass === hash) {
                     var token = jwt.sign({
-                        'data': data
+                        'email': req.body.email
                     }, "secret", {
                             expiresIn: '24h'
                         });
