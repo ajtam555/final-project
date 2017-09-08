@@ -1,7 +1,10 @@
 {
   "name": "final-project",
   "version": "1.0.0",
-  "description": "---",
+  "description": "The Trading App",
+  "engines": {
+    "node": "6.10.3"
+  },
   "main": "server.js",
   "dependencies": {
     "axios": "^0.16.2",
@@ -38,5 +41,6 @@
   "bugs": {
     "url": "https://github.com/ajtam555/final-project/issues"
   },
+
   "homepage": "https://github.com/ajtam555/final-project#readme"
 }
