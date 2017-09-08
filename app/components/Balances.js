@@ -1,6 +1,7 @@
 // include react
 var React = require("react");
 var Link = require('react-router').Link;
+
 //create saved component
 var Balances = React.createClass({
 
