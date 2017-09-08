@@ -32,35 +32,39 @@ app.use(bodyParser.urlencoded({
 }));
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var db = process.env.MONGODB_URI || "mongodb://localhost/mongoTrades";
+//var db = process.env.MONGODB_URI || "mongodb://localhost/mongoTrades";
 
 // Connect mongoose to our database
-mongoose.connect(db, function (error) {
-    // Log any errors connecting with mongoose
-    if (error) {
-        console.log(error);
-    }
-    // Or log a success message
-    else {
-        console.log("mongoose connection is successful");
-    //     var user = new User({name: 'Maria', email: 'maria@me.com', pass: '123', trades: ["599e3a382101ef1a0004b9a5", "599e3cdb2a778f04d84f0c5a" ]});
-    //      var trade = new Trade({ stock: 'LkE', _creator:  user._id});
-    //     // Trade.findById("",function (err, user) {
-           
-           
-    //    // });
+// mongoose.connect(db, function (error) {
+//     // Log any errors connecting with mongoose
+//     if (error) {
+//         console.log(error);
+//     }
+//     // Or log a success message
+//     else {
+//         console.log("mongoose connection is successful");
+    
+//     }
+// });
 
-    //     //var user = new User({name: 'Michael'});
-    //     user.save(function(err){
-    //         trade._creator.push(user);
-    //         console.log(user);
-    //         trade.save();
-    //     });
-    //      trade.save(function (err, tr) {
-    //             console.log(tr);
-    //             user.trades.push(tr);
-    //      });
-    }
+var databaseUri = "mongodb://localhost/mongoTrades";
+if(process.env.MONGODB_URI){
+  console.log("NOT LOCAL")
+  mongoose.connect(process.env.MONGODB_URI);
+}else{
+  mongoose.connect(databaseUri);
+}
+//mongoose.connect("mongodb://localhost/week18day3mongoose");
+var db = mongoose.connection;
+
+// Show any mongoose errors
+db.on("error", function(error) {
+  console.log("Mongoose Error: ", error);
+});
+
+// Once logged in to the db through mongoose, log a success message
+db.once("open", function() {
+  console.log("Mongoose connection successful.");
 });
 
 app.get("/*", function(req, res) {
