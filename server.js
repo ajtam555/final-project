@@ -47,7 +47,7 @@ app.use(bodyParser.urlencoded({
 //     }
 // });
 
-var databaseUri = "mongodb://heroku_k0rb0l2b:db7h0mglq1oh4m0ru47gqhjp7c@ds129004.mlab.com:29004/heroku_k0rb0l2b";
+var databaseUri = "mongodb://localhost/mongoTrades";
 if(process.env.MONGODB_URI){
   console.log("NOT LOCAL")
   mongoose.connect(process.env.MONGODB_URI);
@@ -68,7 +68,7 @@ db.once("open", function() {
 });
 
 app.get("/*", function(req, res) {
- res.sendFile(__dirname + "/public");
+ res.sendFile(__dirname + "/public/index.html");
 });
 
 apiRouter(app);
