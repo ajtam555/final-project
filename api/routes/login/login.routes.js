@@ -56,7 +56,7 @@ const jwt = require('jsonwebtoken');
             .then((data) => {
                 console.log("data is ",data);
                 var hash = bcrypt.hashSync(req.body.pass, data.salt);
-
+                console.log(req.body.email)
                 if (data.pass === hash) {
                     var token = jwt.sign({
                         'email': req.body.email
