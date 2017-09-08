@@ -35,12 +35,11 @@ class Login extends Component {
 
     signIn(event) {
         event.preventDefault();
-        console.log("here", this.state);
         axios.post('/login', this.state)
             .then((res) => {
-                
+                console.log("data is ", res);
                 this.props.history.push('/Portfolio');
-                console.log("statussssssssssssssss" ,res.status);
+                console.log("status" ,res.status);
             })
             .catch((err) => {
 

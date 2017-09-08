@@ -60,7 +60,7 @@ const jwt = require('jsonwebtoken');
 
                 if (data.pass === hash) {
                     var token = jwt.sign({
-                        'email': data.email
+                        'data': data
                     }, "secret", {
                             expiresIn: '24h'
                         });
