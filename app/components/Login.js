@@ -26,7 +26,6 @@ class Login extends Component {
     onEmailChange(event) {
        
         this.setState({ email: event.target.value });
-         console.log(this.state.email);
     }
 
     onPasswordChange(event) {
