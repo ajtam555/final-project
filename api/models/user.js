@@ -7,6 +7,9 @@ var UserSchema = new Schema({
   name: {
     type: String
   },
+  cash: {
+    type: Number,
+  }, 
   email: {
     type: String
   },

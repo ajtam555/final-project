@@ -13,6 +13,10 @@ var tradeSchema = new Schema({
         type: String,
         required: true, 
     },
+    qty: {
+        type: Number,
+        required: true,
+    },
     // date is just a string   
     date: String,
     saved: { 
@@ -29,8 +33,7 @@ var tradeSchema = new Schema({
         type: Number,
     }, 
     accntSize: {
-        type: Number,
-        
+        type: Number,  
     }, 
     _creator: [{type: Schema.Types.ObjectId, ref: "User"}]
 });
